@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using RateLimiter.Runners;
+
+
+var multiThreadedRunner = new MultiThreadedRunner();
+await multiThreadedRunner.Run();
+
+
+
+
+

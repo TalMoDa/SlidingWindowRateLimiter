@@ -1,3 +1,3 @@
 ﻿namespace RateLimiter.Records;
 
-public record  struct RateLimit(TimeSpan Period, int MaxActions);
+public record struct RateLimit(TimeSpan Period, int MaxActions);
