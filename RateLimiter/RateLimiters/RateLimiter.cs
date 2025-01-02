@@ -84,6 +84,14 @@ public class RateLimiter<TArg> : IAsyncDisposable
             var periodTicks = (long)(rateLimitActionTimestamp.Key.Period.TotalSeconds * Stopwatch.Frequency);
             var cutoffTicks = currentTicks - periodTicks;
 
+            // If the timestamps queue is empty or the oldest timestamp is greater than the cutoff ticks
+            // then no need to clean up the timestamps 
+            // and no need for the while loop up next
+            if (timestamps.Count == 0 || (timestamps.TryPeek(out var result) && result > cutoffTicks))
+            {
+                continue;
+            }
+            
             // Remove the old timestamps that are older than the period
             while (timestamps.TryPeek(out var oldest) && oldest <= cutoffTicks)
             {
