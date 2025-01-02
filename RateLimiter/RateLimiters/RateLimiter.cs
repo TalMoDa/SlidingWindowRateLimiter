@@ -64,7 +64,7 @@ public class RateLimiter<TArg> : IAsyncDisposable
             }
 
             // Update all the action timestamps after the delay
-            UpdateActionTimestamps(currentTicks);
+            UpdateActionTimestamps(_stopwatch.ElapsedTicks);
         }
         finally
         {
