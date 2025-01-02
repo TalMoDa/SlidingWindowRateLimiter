@@ -2,7 +2,10 @@
 
 
 var multiThreadedRunner = new MultiThreadedRunner();
-await multiThreadedRunner.Run();
+
+await multiThreadedRunner.RunWithMemoryCache();
+
+//await multiThreadedRunner.Run();
 
 
 
